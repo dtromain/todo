@@ -7,7 +7,7 @@
 
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-		<class>fr.eni.bean.Livre</class>
+		<class>todo.bo.User</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver_class" value="com.mysql.jdbc.Driver" />
