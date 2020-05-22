@@ -1,11 +1,6 @@
 package todo.bo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Category")
@@ -19,11 +14,15 @@ public class Category {
     @Column(name = "NAME")
     private String name;
 
+    @ManyToOne
+    private User user;
+
     public Category() {
     }
 
-    public Category(String name) {
+    public Category(String name, User user) {
         this.name = name;
+        this.user = user;
     }
 
     public int getId() {
@@ -40,5 +39,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

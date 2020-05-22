@@ -1,7 +1,9 @@
 package todo.bo;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Task")
@@ -24,14 +26,23 @@ public class Task {
     @Column(name = "DONE")
     private boolean done;
 
+    @ManyToMany(cascade = {CascadeType.MERGE})
+    private List<Category> categories;
+
+    @ManyToOne
+    private User user;
+
     public Task() {
     }
 
-    public Task(String name, String description, Date date, boolean done) {
+    public Task(String name, String description, Date date, boolean done, User user, List<Category> categories) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.done = done;
+        this.categories = new ArrayList<>();
+        this.categories = categories;
+        this.user = user;
     }
 
     public int getId() {
@@ -72,5 +83,21 @@ public class Task {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -32,7 +32,6 @@ public class User {
     }
 
     public User(String lastName, String firstName, String login, String password) {
-        this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
         this.login = login;

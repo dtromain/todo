@@ -17,7 +17,7 @@ public class TaskDAO {
             et.commit();
         } catch (Exception e) {
             et.rollback();
-            throw new DAOException("Erreur lors de l'ajout d'une tache' " + task + " : " + e.getMessage());
+            throw new DAOException("An error occurred during the task creation' " + task + " : " + e.getMessage());
         }
     }
 
@@ -31,7 +31,7 @@ public class TaskDAO {
             et.commit();
         } catch (Exception e) {
             et.rollback();
-            throw new DAOException("Erreur lors de la suppression d'une tache' " + task + " : " + e.getMessage());
+            throw new DAOException("An error occurred during the task deletion' " + task + " : " + e.getMessage());
         }
     }
 
@@ -44,7 +44,7 @@ public class TaskDAO {
             et.commit();
         } catch (Exception e) {
             et.rollback();
-            throw new DAOException("Erreur lors de la modification d'une tache' " + task + " : " + e.getMessage());
+            throw new DAOException("An error occurred during the task update' " + task + " : " + e.getMessage());
         }
     }
 

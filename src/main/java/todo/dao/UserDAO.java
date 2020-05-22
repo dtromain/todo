@@ -17,7 +17,7 @@ public class UserDAO {
             et.commit();
         } catch (Exception e) {
             et.rollback();
-            throw new DAOException("Erreur lors de l'ajout d'un utilisateur' " + user + " : " + e.getMessage());
+            throw new DAOException("An error occurred during the user creation' " + user + " : " + e.getMessage());
         }
     }
 
@@ -31,7 +31,7 @@ public class UserDAO {
             et.commit();
         } catch (Exception e) {
             et.rollback();
-            throw new DAOException("Erreur lors de la suppression d'un utilisateur' " + user + " : " + e.getMessage());
+            throw new DAOException("An error occurred during the user deletion' " + user + " : " + e.getMessage());
         }
     }
 
@@ -44,7 +44,7 @@ public class UserDAO {
             et.commit();
         } catch (Exception e) {
             et.rollback();
-            throw new DAOException("Erreur lors de la modification d'un utilisateur' " + user + " : " + e.getMessage());
+            throw new DAOException("An error occurred during the user update' " + user + " : " + e.getMessage());
         }
     }
 

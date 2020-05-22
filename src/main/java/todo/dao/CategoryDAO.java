@@ -17,7 +17,7 @@ public class CategoryDAO {
             et.commit();
         } catch (Exception e) {
             et.rollback();
-            throw new DAOException("Erreur lors de l'ajout d'une categorie' " + category + " : " + e.getMessage());
+            throw new DAOException("An error occurred during the category creation' " + category + " : " + e.getMessage());
         }
     }
 
@@ -31,7 +31,7 @@ public class CategoryDAO {
             et.commit();
         } catch (Exception e) {
             et.rollback();
-            throw new DAOException("Erreur lors de la suppression d'une categorie' " + category + " : " + e.getMessage());
+            throw new DAOException("An error occurred during the category deletion' " + category + " : " + e.getMessage());
         }
     }
 
@@ -44,7 +44,7 @@ public class CategoryDAO {
             et.commit();
         } catch (Exception e) {
             et.rollback();
-            throw new DAOException("Erreur lors de la modification d'une categorie' " + category + " : " + e.getMessage());
+            throw new DAOException("An error occurred during the category update' " + category + " : " + e.getMessage());
         }
     }
 

@@ -11,45 +11,106 @@ import todo.bo.Task;
 import todo.dao.TaskDAO;
 import todo.exception.DAOException;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class App {
-    public String getGreeting() {
+
+    public static void main(String[] args) {
         User user1 = new User("lastName", "firstName", "login", "password");
         User user2 = new User("lastName2", "firstName2", "login2", "password2");
         User user3 = new User("lastName3", "firstName3", "login3", "password3");
-        Category category1 = new Category("category1");
-        Category category2 = new Category("category2");
-        Category category3 = new Category("category3");
-        Task task1 = new Task("task1", "description1", new Date(), false);
-        Task task2 = new Task("task2", "description2", new Date(), false);
-        Task task3 = new Task("task3", "description3", new Date(), false);
+
+        Category category1A = new Category("category1A", user1);
+        Category category1B = new Category("category1B", user1);
+        Category category1C = new Category("category1C", user1);
+        Category category2A = new Category("category2A", user2);
+        Category category2B = new Category("category2B", user2);
+        Category category2C = new Category("category2C", user2);
+        Category category3A = new Category("category3A", user3);
+        Category category3B = new Category("category3B", user3);
+        Category category3C = new Category("category3C", user3);
+
+        List<Category> categories1A = new ArrayList<>();
+        categories1A.add(category1A);
+        categories1A.add(category1B);
+
+        List<Category> categories1B = new ArrayList<>();
+        categories1B.add(category1B);
+        categories1B.add(category1C);
+
+        List<Category> categories1C = new ArrayList<>();
+        categories1C.add(category1A);
+        categories1C.add(category1C);
+
+        List<Category> categories2A = new ArrayList<>();
+        categories2A.add(category2A);
+        categories2A.add(category2B);
+
+        List<Category> categories2B = new ArrayList<>();
+        categories2B.add(category2B);
+        categories2B.add(category2C);
+
+        List<Category> categories2C = new ArrayList<>();
+        categories2C.add(category2A);
+        categories2C.add(category2C);
+
+        List<Category> categories3A = new ArrayList<>();
+        categories3A.add(category3A);
+        categories3A.add(category3B);
+
+        List<Category> categories3B = new ArrayList<>();
+        categories3B.add(category3B);
+        categories3B.add(category3C);
+
+        List<Category> categories3C = new ArrayList<>();
+        categories3C.add(category3A);
+        categories3C.add(category3C);
+
+        Task task1A = new Task("task1A", "description1A", new Date(), false, user1, categories1A);
+        Task task1B = new Task("task1B", "description1B", new Date(), false, user1, categories1B);
+        Task task1C = new Task("task1C", "description1C", new Date(), false, user1, categories1C);
+        Task task2A = new Task("task2A", "description2A", new Date(), false, user2, categories2A);
+        Task task2B = new Task("task2B", "description2B", new Date(), false, user2, categories2B);
+        Task task2C = new Task("task2C", "description2C", new Date(), false, user2, categories2C);
+        Task task3A = new Task("task3A", "description3A", new Date(), false, user3, categories3A);
+        Task task3B = new Task("task3B", "description3B", new Date(), false, user3, categories3B);
+        Task task3C = new Task("task3C", "description3C", new Date(), false, user3, categories3C);
 
         UserDAO userDao = new UserDAO();
         CategoryDAO categoryDao = new CategoryDAO();
         TaskDAO taskDao = new TaskDAO();
 
-        System.out.println("\nCréation de 3 utilisateurs ... ");
-        System.out.println("\nCréation de 3 categories ... ");
-        System.out.println("\nCréation de 3 taches ... ");
         try {
+            System.out.println("\nCreate 3 users... ");
             userDao.add(user1);
             userDao.add(user2);
             userDao.add(user3);
-            categoryDao.add(category1);
-            categoryDao.add(category2);
-            categoryDao.add(category3);
-            taskDao.add(task1);
-            taskDao.add(task2);
-            taskDao.add(task3);
+
+            System.out.println("\nCreate 3 categories per user... ");
+            categoryDao.add(category1A);
+            categoryDao.add(category1B);
+            categoryDao.add(category1C);
+            categoryDao.add(category2A);
+            categoryDao.add(category2B);
+            categoryDao.add(category2C);
+            categoryDao.add(category3A);
+            categoryDao.add(category3B);
+            categoryDao.add(category3C);
+
+            System.out.println("\nCreate 3 tasks per user... ");
+            taskDao.add(task1A);
+            taskDao.add(task1B);
+            taskDao.add(task1C);
+            taskDao.add(task2A);
+            taskDao.add(task2B);
+            taskDao.add(task2C);
+            taskDao.add(task3A);
+            taskDao.add(task3B);
+            taskDao.add(task3C);
         } catch (DAOException e) {
             System.out.println(e.getMessage());
         }
-
-        return "Hello world.";
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
     }
 }
