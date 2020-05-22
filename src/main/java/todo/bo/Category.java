@@ -1,5 +1,8 @@
 package todo.bo;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +18,7 @@ public class Category {
     private String name;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     public Category() {
@@ -47,5 +51,14 @@ public class Category {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", user=" + String.valueOf(user.getId()) +
+                '}';
     }
 }

@@ -1,9 +1,10 @@
 package todo.bo;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "Task")
@@ -27,20 +28,21 @@ public class Task {
     private boolean done;
 
     @ManyToMany(cascade = {CascadeType.MERGE})
-    private List<Category> categories;
+    private Set<Category> categories;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     public Task() {
     }
 
-    public Task(String name, String description, Date date, boolean done, User user, List<Category> categories) {
+    public Task(String name, String description, Date date, boolean done, User user, Set<Category> categories) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.done = done;
-        this.categories = new ArrayList<>();
+        this.categories = new HashSet<>();
         this.categories = categories;
         this.user = user;
     }
@@ -85,11 +87,11 @@ public class Task {
         this.done = done;
     }
 
-    public List<Category> getCategories() {
+    public Set<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<Category> categories) {
+    public void setCategories(Set<Category> categories) {
         this.categories = categories;
     }
 
@@ -99,5 +101,26 @@ public class Task {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", date=" + date +
+                ", done=" + done +
+                ", categories=" + categoryIds(categories) +
+                ", user=" + String.valueOf(user.getId()) +
+                '}';
+    }
+
+    public String categoryIds(Set<Category> categories) {
+        String res = "[";
+        for (Category category : categories) {
+            res+=String.valueOf(category.getId())+", ";
+        }
+        return res + "]";
     }
 }
