@@ -3,8 +3,49 @@
  */
 package todo;
 
+import todo.bo.User;
+import todo.dao.UserDAO;
+import todo.bo.Category;
+import todo.dao.CategoryDAO;
+import todo.bo.Task;
+import todo.dao.TaskDAO;
+import todo.exception.DAOException;
+
+import java.util.Date;
+
 public class App {
     public String getGreeting() {
+        User user1 = new User("lastName", "firstName", "login", "password");
+        User user2 = new User("lastName2", "firstName2", "login2", "password2");
+        User user3 = new User("lastName3", "firstName3", "login3", "password3");
+        Category category1 = new Category("category1");
+        Category category2 = new Category("category2");
+        Category category3 = new Category("category3");
+        Task task1 = new Task("task1", "description1", new Date(), false);
+        Task task2 = new Task("task2", "description2", new Date(), false);
+        Task task3 = new Task("task3", "description3", new Date(), false);
+
+        UserDAO userDao = new UserDAO();
+        CategoryDAO categoryDao = new CategoryDAO();
+        TaskDAO taskDao = new TaskDAO();
+
+        System.out.println("\nCréation de 3 utilisateurs ... ");
+        System.out.println("\nCréation de 3 categories ... ");
+        System.out.println("\nCréation de 3 taches ... ");
+        try {
+            userDao.add(user1);
+            userDao.add(user2);
+            userDao.add(user3);
+            categoryDao.add(category1);
+            categoryDao.add(category2);
+            categoryDao.add(category3);
+            taskDao.add(task1);
+            taskDao.add(task2);
+            taskDao.add(task3);
+        } catch (DAOException e) {
+            System.out.println(e.getMessage());
+        }
+
         return "Hello world.";
     }
 

@@ -8,10 +8,12 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<class>todo.bo.User</class>
+		<class>todo.bo.Task</class>
+		<class>todo.bo.Category</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver_class" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/javaavance?useSSL=false&amp;serverTimezone=UTC" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/todo?useSSL=false&amp;serverTimezone=UTC" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="anugli" />
 

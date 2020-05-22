@@ -27,8 +27,7 @@ public class Task {
     public Task() {
     }
 
-    public Task(int id, String name, String description, Date date, boolean done) {
-        this.id = id;
+    public Task(String name, String description, Date date, boolean done) {
         this.name = name;
         this.description = description;
         this.date = date;
