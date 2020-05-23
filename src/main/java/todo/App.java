@@ -30,39 +30,39 @@ public class App {
         Category category3B = new Category("category3B", user3);
         Category category3C = new Category("category3C", user3);
 
-        Set<Category> categories1A = new HashSet<>();
+        List<Category> categories1A = new ArrayList<>();
         categories1A.add(category1A);
         categories1A.add(category1B);
 
-        Set<Category> categories1B = new HashSet<>();
+        List<Category> categories1B = new ArrayList<>();
         categories1B.add(category1B);
         categories1B.add(category1C);
 
-        Set<Category> categories1C = new HashSet<>();
+        List<Category> categories1C = new ArrayList<>();
         categories1C.add(category1A);
         categories1C.add(category1C);
 
-        Set<Category> categories2A = new HashSet<>();
+        List<Category> categories2A = new ArrayList<>();
         categories2A.add(category2A);
         categories2A.add(category2B);
 
-        Set<Category> categories2B = new HashSet<>();
+        List<Category> categories2B = new ArrayList<>();
         categories2B.add(category2B);
         categories2B.add(category2C);
 
-        Set<Category> categories2C = new HashSet<>();
+        List<Category> categories2C = new ArrayList<>();
         categories2C.add(category2A);
         categories2C.add(category2C);
 
-        Set<Category> categories3A = new HashSet<>();
+        List<Category> categories3A = new ArrayList<>();
         categories3A.add(category3A);
         categories3A.add(category3B);
 
-        Set<Category> categories3B = new HashSet<>();
+        List<Category> categories3B = new ArrayList<>();
         categories3B.add(category3B);
         categories3B.add(category3C);
 
-        Set<Category> categories3C = new HashSet<>();
+        List<Category> categories3C = new ArrayList<>();
         categories3C.add(category3A);
         categories3C.add(category3C);
 
@@ -112,14 +112,17 @@ public class App {
 
             System.out.println("\nDelete task1A ");
             taskDao.delete(task1A);
+            taskDao.delete(task1C);
+
+            showDatabase();
+
+            System.out.println("\nDelete 3 category1A ");
+            categoryDao.delete(category1A);
 
             showDatabase();
 
             System.out.println("\nDelete user1 ");
             userDao.delete(user1);
-
-            /*System.out.println("\nDelete 3 category1A ");
-            categoryDao.delete(category1A);*/
 
         } catch (DAOException e) {
             System.out.println(e.getMessage());

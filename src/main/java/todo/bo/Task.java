@@ -4,31 +4,39 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Table(name = "Task")
-public class Task {
+public class Task implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     private int id;
 
-    @Column(name = "NAME")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "DESCRIPTION")
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "DATE")
+    @Column(name = "date")
     private Date date;
 
-    @Column(name = "DONE")
+    @Column(name = "done")
     private boolean done;
 
-    @ManyToMany(cascade = {CascadeType.MERGE})
-    private Set<Category> categories;
+    @ManyToMany
+    @JoinTable(
+            name = "TaskCategory",
+            joinColumns = {@JoinColumn(name = "taskId", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "categoryId", referencedColumnName = "id")}
+            )
+    private List<Category> categories;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -37,12 +45,12 @@ public class Task {
     public Task() {
     }
 
-    public Task(String name, String description, Date date, boolean done, User user, Set<Category> categories) {
+    public Task(String name, String description, Date date, boolean done, User user, List<Category> categories) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.done = done;
-        this.categories = new HashSet<>();
+        this.categories = new ArrayList<>();
         this.categories = categories;
         this.user = user;
     }
@@ -87,11 +95,11 @@ public class Task {
         this.done = done;
     }
 
-    public Set<Category> getCategories() {
+    public List<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<Category> categories) {
+    public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
 
@@ -116,7 +124,7 @@ public class Task {
                 '}';
     }
 
-    public String categoryIds(Set<Category> categories) {
+    public String categoryIds(List<Category> categories) {
         String res = "[";
         for (Category category : categories) {
             res+=String.valueOf(category.getId())+", ";

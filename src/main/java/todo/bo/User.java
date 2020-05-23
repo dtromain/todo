@@ -6,26 +6,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "User")
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     private int id;
 
-    @Column(name = "LASTNAME")
+    @Column(name = "lastname")
     private String lastName;
 
-    @Column(name = "FIRSTNAME")
+    @Column(name = "firstname")
     private String firstName;
 
-    @Column(name = "LOGIN")
+    @Column(name = "login")
     private String login;
 
-    @Column(name = "PASSWORD")
+    @Column(name = "password")
     private String password;
 
     public User() {
