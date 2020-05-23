@@ -49,7 +49,7 @@ public class UserDAO {
     }
 
     public List<User> findAll() {
-        String req = "Select Object(l) from User l";
+        String req = "Select Object(u) from User u";
         return DAOUtil.getEntityManager().createQuery(req, User.class).getResultList();
     }
 }

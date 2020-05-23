@@ -1,12 +1,10 @@
 package todo.dao;
 
-import todo.bo.Category;
 import todo.bo.Task;
 import todo.exception.DAOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
 import java.util.List;
 
 public class TaskDAO {
@@ -51,15 +49,14 @@ public class TaskDAO {
     }
 
     public List<Task> findAll() {
-        String req = "Select Object(l) from Task l";
+        String req = "Select Object(t) from Task t";
         return DAOUtil.getEntityManager().createQuery(req, Task.class).getResultList();
     }
 
     public List<Task> findAllByCategory(int categoryId) {
-        String hql = "Select Object(t) from Task t where :categoryId in t.categories";
-        Query query = DAOUtil.getEntityManager().createQuery(hql);
-        query.setParameter("categoryId", categoryId);
-        List<Task> results = query.getResultList();
-        return results;
+        return DAOUtil.getEntityManager()
+                .createQuery("Select Object(t) from Task t inner join t.categories c where c.id = :categoryId")
+                .setParameter("categoryId", categoryId)
+                .getResultList();
     }
 }

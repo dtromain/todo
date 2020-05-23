@@ -57,7 +57,7 @@ public class CategoryDAO {
     }
 
     public List<Category> findAll() {
-        String req = "Select Object(l) from Category l";
+        String req = "Select Object(c) from Category c";
         return DAOUtil.getEntityManager().createQuery(req, Category.class).getResultList();
     }
 }

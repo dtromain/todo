@@ -1,6 +1,5 @@
 package todo.bo;
 
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -117,7 +116,12 @@ public class Task implements Serializable {
     }
 
     public void removeCategory(Category category) {
-        this.categories.remove(category);
+        for (Iterator<Category> iter = this.getCategories().listIterator(); iter.hasNext();) {
+            Category currentCategory = iter.next();
+            if (currentCategory.getId() == category.getId()) {
+                iter.remove();
+            }
+        }
     }
 
     @Override

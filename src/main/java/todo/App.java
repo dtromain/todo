@@ -120,12 +120,14 @@ public class App {
 
             showDatabase();
 
-            System.out.println("\nDelete user1 ");
-            userDao.delete(user1);
+            /*System.out.println("\nDelete user1 ");
+            userDao.delete(user1);*/
 
         } catch (DAOException e) {
             System.out.println(e.getMessage());
         }
+
+        System.exit(0);
     }
 
     public static void showDatabase() {
