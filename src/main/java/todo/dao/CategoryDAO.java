@@ -1,6 +1,7 @@
 package todo.dao;
 
 import todo.bo.Category;
+import todo.bo.Task;
 import todo.exception.DAOException;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,9 @@ import javax.persistence.EntityTransaction;
 import java.util.List;
 
 public class CategoryDAO {
+
+    private TaskDAO taskDao = new TaskDAO();
+
     public void add(Category category) throws DAOException {
         EntityManager em = DAOUtil.getEntityManager();
         EntityTransaction et = em.getTransaction();
@@ -27,6 +31,10 @@ public class CategoryDAO {
         et.begin();
         category = em.find(Category.class, category.getId());
         try {
+            for(Task task : taskDao.findAllByCategory(category.getId())) {
+                task.removeCategory(category);
+                taskDao.update(task);
+            }
             em.remove(category);
             et.commit();
         } catch (Exception e) {

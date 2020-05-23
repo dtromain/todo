@@ -112,7 +112,6 @@ public class App {
 
             System.out.println("\nDelete task1A ");
             taskDao.delete(task1A);
-            taskDao.delete(task1C);
 
             showDatabase();
 

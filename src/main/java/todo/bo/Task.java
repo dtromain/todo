@@ -1,5 +1,6 @@
 package todo.bo;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -109,6 +110,14 @@ public class Task implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void addCategory(Category category) {
+        this.categories.add(category);
+    }
+
+    public void removeCategory(Category category) {
+        this.categories.remove(category);
     }
 
     @Override
