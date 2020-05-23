@@ -28,6 +28,7 @@ public class UserDAO {
         user = em.find(User.class, user.getId());
         try {
             em.remove(user);
+            em.clear();
             et.commit();
         } catch (Exception e) {
             et.rollback();

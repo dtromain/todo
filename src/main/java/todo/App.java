@@ -16,7 +16,7 @@ import java.util.*;
 public class App {
 
     public static void main(String[] args) {
-        User user1 = new User("lastName", "firstName", "login", "password1");
+        User user1 = new User("lastName1", "firstName1", "login1", "password1");
         User user2 = new User("lastName2", "firstName2", "login2", "password2");
         User user3 = new User("lastName3", "firstName3", "login3", "password3");
 
@@ -113,16 +113,32 @@ public class App {
             System.out.println("\nDelete task1A ");
             taskDao.delete(task1A);
 
-            showDatabase();
-
             System.out.println("\nDelete 3 category1A ");
             categoryDao.delete(category1A);
 
+            System.out.println("\nDelete user1 ");
+            userDao.delete(user1);
+
             showDatabase();
 
-            /*System.out.println("\nDelete user1 ");
-            userDao.delete(user1);*/
+            System.out.println("\nUpdate user2 ");
+            user2.setFirstName("Un autre firstname");
+            user2.setLastName("Un autre lastname");
+            user2.setLogin("Un autre login");
+            user2.setPassword("Un autre password");
+            userDao.update(user2);
 
+            System.out.println("\nUpdate task2A ");
+            task2A.setDescription("Une autre description");
+            task2A.setDone(true);
+            task2A.setName("Un autre nom");
+            taskDao.update(task2A);
+
+            System.out.println("\nUpdate category2A ");
+            category2A.setName("Encore un autre nom");
+            categoryDao.update(category2A);
+
+            showDatabase();
         } catch (DAOException e) {
             System.out.println(e.getMessage());
         }
