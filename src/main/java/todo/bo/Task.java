@@ -132,16 +132,16 @@ public class Task implements Serializable {
                 ", description='" + description + '\'' +
                 ", date=" + date +
                 ", done=" + done +
-                ", categories=" + categoryIds(categories) +
-                ", user=" + String.valueOf(user.getId()) +
+                ", categories=" + Arrays.toString(categoryIds(categories)) +
+                ", user=" + user.getId() +
                 '}';
     }
 
-    public String categoryIds(List<Category> categories) {
-        String res = "[";
-        for (Category category : categories) {
-            res+=String.valueOf(category.getId())+", ";
+    public int[] categoryIds(List<Category> categories) {
+        int[] res = new int[categories.size()];
+        for (int i=0; i<categories.size(); i++) {
+            res[i] = categories.get(i).getId();
         }
-        return res + "]";
+        return res;
     }
 }
