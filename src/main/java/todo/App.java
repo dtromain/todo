@@ -3,12 +3,9 @@
  */
 package todo;
 
-import todo.bo.User;
-import todo.dao.UserDAO;
-import todo.bo.Category;
-import todo.dao.CategoryDAO;
-import todo.bo.Task;
-import todo.dao.TaskDAO;
+import todo.bean.User;
+import todo.bean.Category;
+import todo.bean.Task;
 import todo.exception.DAOException;
 
 import java.util.*;

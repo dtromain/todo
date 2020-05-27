@@ -1,4 +1,4 @@
-package todo.bo;
+package todo.bean;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

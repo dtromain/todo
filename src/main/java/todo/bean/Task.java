@@ -1,4 +1,4 @@
-package todo.bo;
+package todo.bean;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
