@@ -143,7 +143,6 @@
 				<li class="pull-right"><a >Formation Eni</a></li>		
 			</ul>
 		</div>
-	</nav>	
-	
+	</nav>
 </body>
 </html>
