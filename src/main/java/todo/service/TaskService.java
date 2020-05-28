@@ -33,6 +33,7 @@ public class TaskService {
         dao.delete(t);
     }
 
+<<<<<<< HEAD
     public List<Task> sort(String type){
         List<Task> tasks = null;
         switch (type){
@@ -43,5 +44,17 @@ public class TaskService {
             default : tasks = dao.findAll();
         }
         return tasks;
+=======
+    public List<Task> trier(String type){
+        List<Task> liste = null;
+        switch (type){
+            case "dA" : liste = dao.findByOrderByDateAsc(); break;
+            case "dD" : liste = dao.findByOrderByDateDesc(); break;
+            case "cA" : liste = dao.findByOrderByCategoryAsc(); break;
+            case "cD" : liste = dao.findByOrderByCategoryDesc(); break;
+            default : liste = dao.findAll();
+        }
+        return liste;
+>>>>>>> 7d2562199c06d4ef89c38d65173da08f9855d855
     }
 }

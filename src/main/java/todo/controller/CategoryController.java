@@ -1,5 +1,6 @@
 package todo.controller;
 
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -46,4 +47,7 @@ public class CategoryController {
         cs.create(category);
         return tc.listTasks();
     }
+=======
+public class CategoryController {
+>>>>>>> 7d2562199c06d4ef89c38d65173da08f9855d855
 }

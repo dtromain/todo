@@ -1,5 +1,6 @@
 package todo.controller;
 
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -91,4 +92,7 @@ public class TaskController {
         ts.update(t);
         return listTasks();
     }
+=======
+public class TaskController {
+>>>>>>> 7d2562199c06d4ef89c38d65173da08f9855d855
 }
