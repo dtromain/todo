@@ -5,7 +5,11 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
+<<<<<<< HEAD
           <factory-entry name="emf" />
+=======
+          <factory-entry name="Mysql_UP" value="032f40c7-c1b8-44ce-b9ef-b94e1afdadbd" />
+>>>>>>> c3ee154a121b84794dabaa00307251cc7916e5d2
           <factory-entry name="todo.main" />
         </datasource-mapping>
         <naming-strategy-map />
