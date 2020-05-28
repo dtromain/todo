@@ -12,6 +12,6 @@
 	<link rel="stylesheet" href="css/commun.css">
 </head>
 <body>
-
+	<h1>Hello world !</h1>
 </body>
 </html>
