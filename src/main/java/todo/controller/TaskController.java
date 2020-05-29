@@ -1,11 +1,12 @@
 package todo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import todo.bean.Category;
 import todo.bean.Task;
@@ -20,7 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@Scope("session")
+//@Scope("session")
+@SessionAttributes("user")
 public class TaskController {
 
     @Autowired
@@ -40,13 +42,14 @@ public class TaskController {
     }
 
     @RequestMapping(path = "/listTasks", method = RequestMethod.GET)
-    public ModelAndView listTasks(HttpSession session) {
+    public ModelAndView listTasks(@ModelAttribute("user")User user) {
         List<Task> tasks = new ArrayList<>();
         try {
             tasks = ts.findAll();
         } catch (NullPointerException e) {
 
         }
+        System.out.println("user: "+user);
         return new ModelAndView("listTasks", "tasks", tasks);
     }
 
@@ -66,7 +69,7 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/validCreateTask", method = RequestMethod.POST)
-    public ModelAndView validCreateTask(Task task, ModelMap model, HttpSession session) {
+    public ModelAndView validCreateTask(Task task, ModelMap model, HttpSession session, @ModelAttribute("user")User user) {
         List<Category> categories = new ArrayList<>();
         for(Category category: task.getCategories()) {
             int index = Integer.parseInt(category.getName());
@@ -75,25 +78,25 @@ public class TaskController {
         task.setCategories(categories);
         Task t = ts.create(task);
         user.addTask(t);
-        return this.listTasks(session);
+        return this.listTasks(user);
     }
 
     @RequestMapping(value = "/deleteTask", method = RequestMethod.GET)
-    public ModelAndView deleteTask(String index, HttpSession session) {
+    public ModelAndView deleteTask(String index, @ModelAttribute("user")User user) {
         int i = Integer.parseInt(index.substring(1));
         Task task = ts.findOneById(i);
         ts.delete(task);
-        return listTasks(session);
+        return listTasks(user);
     }
 
     @RequestMapping(value = "/detailsTask", method = RequestMethod.GET)
-    public ModelAndView detailsTask(Integer index, HttpSession session) {
+    public ModelAndView detailsTask(Integer index, @ModelAttribute("user")User user) {
         Task task = null;
         if (index != null) {
             task = ts.findOneById(index);
             return new ModelAndView("detailsTask", "task", task);
         } else {
-            return listTasks(session);
+            return listTasks(user);
         }
     }
 
@@ -109,8 +112,8 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/validUpdateTask", method = RequestMethod.POST)
-    public ModelAndView validUpdateTask(Task t, HttpSession session) {
+    public ModelAndView validUpdateTask(Task t, @ModelAttribute("user")User user) {
         ts.update(t);
-        return listTasks(session);
+        return listTasks(user);
     }
 }
