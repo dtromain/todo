@@ -30,13 +30,17 @@ public class UserController {
     }
 
     @RequestMapping(path = "/validLogin", method = RequestMethod.POST)
-    public ModelAndView validLogin(User logUser, ModelMap model, HttpServletRequest request, HttpSession session) {
+    public ModelAndView validLogin(User logUser, ModelMap model, HttpSession session) {
 
         User registerUser = us.findOneByLogin(logUser.getLogin());
 
-        if (registerUser != null || logUser.getPassword().equals(registerUser.getPassword())) {
-            request.getSession().setAttribute("user", registerUser);
-            return ts.listTasks(session);
+        if (registerUser != null) {
+            if (logUser.getPassword().equals(registerUser.getPassword())) {
+                session.setAttribute("user", registerUser);
+                return ts.listTasks(session);
+            } else {
+                return new ModelAndView("login");
+            }
         } else {
             return new ModelAndView("login");
         }
