@@ -13,18 +13,11 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    @Autowired
-    UserService us;
-
-    @RequestMapping(path="/login", method= RequestMethod.GET)
-    public ModelAndView listTasks(){
-        //List<Task> tasks = ts.findAll();
-        return "path/login";
-    }
+    //@Autowired
+    //UserService us;
 
     @RequestMapping(path="/login", method= RequestMethod.POST)
-    public ModelAndView listTasks(){
-        //return new ModelAndView("listTasks", "tasks", tasks);
+    public ModelAndView validLogin(){
         return new ModelAndView();
     }
 }
