@@ -46,10 +46,10 @@
 	<br><br>
 		<div>
 	<form:form action="ajouterValid" method="POST" cssClass="form-horizontal" modelAttribute="film">
-				<div class="form-group">			
+				<div class="form-group">
 					<form:label path="titre" cssClass="col-xs-2 control-label">Titre :</form:label>
 					<div class="col-xs-10">
-						<form:input path="titre"  placeholder="Titre du film ..."  cssClass="form-control" /> 
+						<form:input path="titre"  placeholder="Titre du film ..."  cssClass="form-control" />
 					</div>
 				</div>
 
@@ -144,5 +144,6 @@
 			</ul>
 		</div>
 	</nav>
+
 </body>
 </html>

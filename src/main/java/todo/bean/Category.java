@@ -20,16 +20,11 @@ public class Category implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private User user;
-
     public Category() {
     }
 
-    public Category(String name, User user) {
+    public Category(String name) {
         this.name = name;
-        this.user = user;
     }
 
     public int getId() {
@@ -48,20 +43,11 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "Category{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", user=" + String.valueOf(user.getId()) +
+                ", name='" + name +
                 '}';
     }
 }

@@ -38,10 +38,6 @@ public class Task implements Serializable {
             )
     private List<Category> categories;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private User user;
-
     public Task() {
     }
 
@@ -52,7 +48,6 @@ public class Task implements Serializable {
         this.done = done;
         this.categories = new ArrayList<>();
         this.categories = categories;
-        this.user = user;
     }
 
     public int getId() {
@@ -103,14 +98,6 @@ public class Task implements Serializable {
         this.categories = categories;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     public void addCategory(Category category) {
         this.categories.add(category);
     }
@@ -133,7 +120,6 @@ public class Task implements Serializable {
                 ", date=" + date +
                 ", done=" + done +
                 ", categories=" + Arrays.toString(categoryIds(categories)) +
-                ", user=" + user.getId() +
                 '}';
     }
 

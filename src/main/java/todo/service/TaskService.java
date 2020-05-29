@@ -43,10 +43,10 @@ public class TaskService {
                 tasks = dao.findByOrderByDateDesc();
                 break;
             case "cA":
-                tasks = dao.findByOrderByCategoryAsc();
+                tasks = dao.findByOrderByCategoriesAsc();
                 break;
             case "cD":
-                tasks = dao.findByOrderByCategoryDesc();
+                tasks = dao.findByOrderByCategoriesDesc();
                 break;
             default:
                 tasks = dao.findAll();

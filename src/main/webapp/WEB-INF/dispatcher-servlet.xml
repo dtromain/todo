@@ -14,9 +14,7 @@
 	<context:annotation-config />
 	<context:component-scan base-package="todo.controller, todo.service" />
 
-	<bean id="messageSource" 
-			class="org.springframework.context.support.ResourceBundleMessageSource">
-			
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 			<property name="basename" value="message" />
 	</bean>
 	
@@ -32,16 +30,13 @@
 
 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 	
-	<jpa:repositories base-package="todo.dao"
-						entity-manager-factory-ref="emf"/>
+	<jpa:repositories base-package="todo.dao" entity-manager-factory-ref="emf"/>
 	
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="/WEB-INF/datasource.properties"></property>
 	</bean>
 	
-	<bean id="datasource" class="org.apache.commons.dbcp2.BasicDataSource" 
-		destroy-method="close">
-	
+	<bean id="datasource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 			<property name="driverClassName" value="${driver}"/>
 			<property name="url" value="${url}"/>
 			<property name="username" value= "${user}"/>
@@ -70,7 +65,6 @@
 				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
 			</props>
 		</property>
-	
  	</bean>
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

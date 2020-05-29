@@ -44,42 +44,31 @@ img {
 			<div class="navbar-collapse collapse" id="navbar-main">
 				<ul class="nav navbar-nav navbar-right">
 					<li ><a href="../index.jsp">Accueil</a></li>
-					<li class="active"><a href="#">Liste des films</a></li>
-					<li><a href="ajouter">Ajouter un film</a></li>
-					<li><a href="listerStyle">Styles</a></li>
-					<li><a href="../geo.jsp">Qui sommes-nous</a></li>
+					<li class="listTasks"><a href="#">Tasks</a></li>
+					<li><a href="listCategories">Categories</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>	
 	<div class="container">
-	<h1 class="bleu">Liste des films</h1>
+	<h1 class="bleu">Tasks list</h1>
 	<br><br>
 	<table class="table table-hover table-striped">
 		<tr>
-			<th><a href="trier?par=tA"><span class="glyphicon glyphicon-menu-down"></span></a> Titre <a
-				href="trier?par=tD"><span class="glyphicon glyphicon-menu-up"></span></a></th>
-			<th><a href="trier?par=aA"><span class="glyphicon glyphicon-menu-down"></span></a> Année <a
-				href="trier?par=aD"><span class="glyphicon glyphicon-menu-up"></a></th>
-			<th><a href="trier?par=sA"><span class="glyphicon glyphicon-menu-down"></span></a> Style <a
-				href="trier?par=sD"><span class="glyphicon glyphicon-menu-up"></a></th>
-			<th><a href="trier?par=rA"><span class="glyphicon glyphicon-menu-down"></span></a> Réalisateur <a
-				href="trier?par=rD"><span class="glyphicon glyphicon-menu-up"></a></th>
-			<th><a href="trier?par=dA"><span class="glyphicon glyphicon-menu-down"></span></a> Durée <a
-				href="trier?par=dD"><span class="glyphicon glyphicon-menu-up"></a></th>
-			<th><a href="trier?par=vA"><span class="glyphicon glyphicon-menu-down"></span></a> Vu <a
-				href="trier?par=vD"><span class="glyphicon glyphicon-menu-up"></a></th>
+			<th><a href="sortTasks?type=tA"><span class="glyphicon glyphicon-menu-down"></span></a> Name <a
+				href="sortTasks?type=tD"><span class="glyphicon glyphicon-menu-up"></span></a></th>
+			<th></th>
+			<th><a href="sortTasks?type=dA"><span class="glyphicon glyphicon-menu-down"></span></a> Date <a
+				href="sortTasks?type=dD"><span class="glyphicon glyphicon-menu-up"></a></th>
 			<th></th>
 			<th></th>
 		</tr>
-		<c:forEach items="${listeF}" var="f" varStatus="bStatus">
+		<c:forEach items="${tasks}" var="t" varStatus="bStatus">
 			<tr>
-				<td><a href="afficher?index=${f.id}">${f.titre}</a></td>
-				<td>${f.annee}</td>
-				<td>${f.style.libelle}</td>
-				<td>${f.real.prenom} ${f.real.nom}</td>
-				<td>${f.duree}</td>
-				<td>${f.vu?"Oui":"Non"}</td>
+				<td><a href="detailsTask?index=${t.id}">${t.name}</a></td>
+				<td>${t.description}</td>
+				<td>${t.date}</td>
+				<td>${t.done?"Yes":"No"}</td>
 				<td class="centre">
 					<span class="modif glyphicon glyphicon-edit vert"  id="m${f.id}"></span>
 				</td>

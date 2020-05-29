@@ -30,21 +30,21 @@ public class TaskController {
     @RequestMapping(path="/listTasks", method= RequestMethod.GET)
     public ModelAndView listTasks(){
         List<Task> tasks = ts.findAll();
-        return new ModelAndView("tasksList", "tasks", tasks);
+        return new ModelAndView("listTasks", "tasks", tasks);
     }
 
     @RequestMapping(value="/sortTasks", method=RequestMethod.GET)
     public ModelAndView sortTasks(String type){
         List<Task> tasks = ts.sort(type);
-        return new ModelAndView("tasksList", "tasks", tasks);
+        return new ModelAndView("listTasks", "tasks", tasks);
     }
 
     @RequestMapping(value="/createTask", method=RequestMethod.GET)
     public ModelAndView createTask(){
         Task t = new Task();
         ModelAndView mav = new ModelAndView("createTask", "task", t);
-        List<Category> listeStyles = cs.findAll();
-        mav.getModelMap().addAttribute("listeStyles", listeStyles);
+        List<Category> categories = cs.findAll();
+        mav.getModelMap().addAttribute("categories", categories);
         return mav;
     }
 
