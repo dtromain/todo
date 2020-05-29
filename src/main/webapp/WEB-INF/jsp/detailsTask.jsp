@@ -61,12 +61,12 @@
             <div class="form-group">
                 <form:label path="date" cssClass="col-xs-2 control-label">Date :</form:label>
                 <div class="col-xs-10">
-                    <form:input path="date" type="date" readonly="true" cssClass="form-control"/>
+                    <form:input path="date" readonly="true" cssClass="form-control"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <form:label path="done" cssClass="col-xs-2 control-label">Durée :</form:label>
+                <form:label path="done" cssClass="col-xs-2 control-label">Done :</form:label>
                 <div class="col-xs-10">
                     <form:checkbox readonly="true" path="done" cssClass="form-control"/>
                 </div>

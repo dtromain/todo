@@ -1,5 +1,7 @@
 package todo.bean;
 
+import org.springframework.context.annotation.Scope;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "User")
+@Scope("session")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,6 +50,11 @@ public class User implements Serializable {
         this.password = password;
         this.categories = new ArrayList<>();
         this.tasks = new ArrayList<>();
+    }
+
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
     }
 
     public int getId() {
