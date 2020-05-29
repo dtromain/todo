@@ -12,6 +12,7 @@ import todo.service.CategoryService;
 import todo.service.TaskService;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,7 +30,12 @@ public class TaskController {
 
     @RequestMapping(path="/listTasks", method= RequestMethod.GET)
     public ModelAndView listTasks(){
-        List<Task> tasks = ts.findAll();
+        List<Task> tasks = new ArrayList<>();
+        try {
+            tasks = ts.findAll();
+        } catch (NullPointerException e) {
+
+        }
         return new ModelAndView("listTasks", "tasks", tasks);
     }
 
@@ -48,7 +54,7 @@ public class TaskController {
         return mav;
     }
 
-    @RequestMapping(value="/createValidTask", method=RequestMethod.POST)
+    @RequestMapping(value="/validCreateTask", method=RequestMethod.POST)
     public ModelAndView validCreateTask(Task task, ModelMap model){
         ts.create(task);
         return listTasks();
@@ -84,7 +90,6 @@ public class TaskController {
         mav.getModelMap().addAttribute("categories", categories);
         return mav;
     }
-
 
     @RequestMapping(value="/validUpdateTask", method=RequestMethod.POST)
     public ModelAndView validUpdateTask(Task t){

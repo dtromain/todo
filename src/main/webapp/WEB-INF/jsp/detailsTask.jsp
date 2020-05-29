@@ -16,30 +16,28 @@
 	
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-		        <a  href="../index.jsp" class="navbar-brand active">
-		        <span class="glyphicon glyphicon-film"></span> 
-		        <span class="glyphicon glyphicon-film"></span> 
-		        </a>
-		          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		          </button>
-		    </div>
-			<div class="navbar-collapse collapse" id="navbar-main">
-				<ul class="nav navbar-nav navbar-right">
-					<li ><a href="../index.jsp">Accueil</a></li>
-					<li><a href="lister">Liste des films</a></li>
-					<li><a href="ajouter">Ajouter un film</a></li>
-					<li><a href="listerStyle">Styles</a></li>
-					<li><a href="../geo.jsp">Qui sommes-nous</a></li>
-				</ul>
-			</div>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<a  href="../index.jsp" class="navbar-brand active">
+				<span class="glyphicon glyphicon-film"></span>
+				<span class="glyphicon glyphicon-film"></span>
+			</a>
+			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 		</div>
-	</nav>	
+		<div class="navbar-collapse collapse" id="navbar-main">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="../index.jsp">Accueil</a></li>
+				<li><a href="listTasks">Tasks</a></li>
+				<li><a href="createCategory">Categories</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
 	
 <div class="container">	
 	<h1 class="bleu">Votre film</h1>
