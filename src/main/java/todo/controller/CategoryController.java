@@ -18,14 +18,10 @@ public class CategoryController {
     @Autowired
     CategoryService cs;
 
+    TaskController tc = new TaskController();
+
     @PostConstruct
     private void init(){
-    }
-
-    @RequestMapping(path="/listCategories", method= RequestMethod.GET)
-    public ModelAndView listCategories(){
-        List<Category> categories = cs.findAll();
-        return new ModelAndView("listCategories", "categories", categories);
     }
 
     @RequestMapping(value="/createCategory", method=RequestMethod.GET)
@@ -38,8 +34,8 @@ public class CategoryController {
     }
 
     @RequestMapping(value="/validCreateCategory", method=RequestMethod.POST)
-    public ModelAndView createValidCategory(Category category, ModelMap model){
+    public ModelAndView validCreateCategory(Category category, ModelMap model){
         cs.create(category);
-        return null;
+        return tc.listTasks();
     }
 }

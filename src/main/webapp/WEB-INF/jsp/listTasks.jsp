@@ -43,13 +43,13 @@ img {
 		    </div>
 			<div class="navbar-collapse collapse" id="navbar-main">
 				<ul class="nav navbar-nav navbar-right">
-					<li ><a href="../index.jsp">Accueil</a></li>
-					<li class="listTasks"><a href="#">Tasks</a></li>
-					<li><a href="listCategories">Categories</a></li>
+					<li><a href="../index.jsp">Accueil</a></li>
+					<li><a href="listTasks">Tasks</a></li>
+					<li><a href="createCategory">Categories</a></li>
 				</ul>
 			</div>
 		</div>
-	</nav>	
+	</nav>
 	<div class="container">
 	<h1 class="bleu">Tasks list</h1>
 	<br><br>
