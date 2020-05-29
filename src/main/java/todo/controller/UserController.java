@@ -3,20 +3,19 @@ package todo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import todo.bean.User;
 import todo.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
+@SessionAttributes("user")
 public class UserController {
-
-    @Autowired
-    private User user;
 
     @Autowired
     UserService us;
@@ -30,14 +29,14 @@ public class UserController {
     }
 
     @RequestMapping(path = "/validLogin", method = RequestMethod.POST)
-    public ModelAndView validLogin(User logUser, ModelMap model, HttpSession session) {
+    public ModelAndView validLogin(User logUser, ModelMap model, HttpSession session, @ModelAttribute("user")User user) {
 
         User registerUser = us.findOneByLogin(logUser.getLogin());
 
         if (registerUser != null) {
             if (logUser.getPassword().equals(registerUser.getPassword())) {
                 session.setAttribute("user", registerUser);
-                return ts.listTasks(session);
+                return ts.listTasks(user);
             } else {
                 return new ModelAndView("login");
             }

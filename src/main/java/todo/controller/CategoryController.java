@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import todo.bean.Category;
 import todo.bean.User;
@@ -16,7 +18,8 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@Scope("session")
+//@Scope("session")
+@SessionAttributes("user")
 public class CategoryController {
 
     @Autowired
@@ -41,10 +44,10 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/validCreateCategory", method = RequestMethod.POST)
-    public ModelAndView validCreateCategory(Category category, ModelMap model, HttpSession session) {
+    public ModelAndView validCreateCategory(Category category, ModelMap model, @ModelAttribute("user")User user) {
         Category c = cs.create(category);
         user.addCategory(c);
         cs.create(category);
-        return tc.listTasks(session);
+        return tc.listTasks(user);
     }
 }
