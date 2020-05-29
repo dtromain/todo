@@ -16,58 +16,58 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a  href="../index.jsp" class="navbar-brand active">
-                <span class="glyphicon glyphicon-film"></span>
-                <span class="glyphicon glyphicon-film"></span>
-            </a>
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a  href="../index.jsp" class="navbar-brand active">
+                    <span class="glyphicon glyphicon-film"></span>
+                    <span class="glyphicon glyphicon-film"></span>
+                </a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ><a href="../index.jsp">Accueil</a></li>
+                    <li><a href="listTasks">Tasks</a></li>
+                    <li><a href="createCategory">Categories</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-            <ul class="nav navbar-nav navbar-right">
-                <li ><a href="../index.jsp">Accueil</a></li>
-                <li><a href="listTasks">Tasks</a></li>
-                <li><a href="createCategory">Categories</a></li>
+    </nav>
+
+    <div class="container">
+        <h1 class="bleu">Create new category</h1>
+        <br><br>
+        <div>
+            <form:form action="validCreateCategory" method="POST" cssClass="form-horizontal" modelAttribute="category">
+                <div class="form-group">
+                    <form:label path="name" cssClass="col-xs-2 control-label">Name :</form:label>
+                    <div class="col-xs-10">
+                        <form:input path="name"  placeholder="Task name ..."  cssClass="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group" >
+                    <div class="col-xs-offset-2 col-xs-10">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </form:form>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <ul class="nav navbar-nav  navbar-foot">
+                <li class="pull-left"><a>© 2017 Copyright</a></li>
+                <li class="pull-right"><a >Formation Eni</a></li>
             </ul>
         </div>
-    </div>
-</nav>
-
-<div class="container">
-    <h1 class="bleu">Create new category</h1>
-    <br><br>
-    <div>
-        <form:form action="validCreateCategory" method="POST" cssClass="form-horizontal" modelAttribute="category">
-            <div class="form-group">
-                <form:label path="name" cssClass="col-xs-2 control-label">Name :</form:label>
-                <div class="col-xs-10">
-                    <form:input path="name"  placeholder="Task name ..."  cssClass="form-control" />
-                </div>
-            </div>
-
-            <div class="form-group" >
-                <div class="col-xs-offset-2 col-xs-10">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </form:form>
-    </div>
-</div>
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <ul class="nav navbar-nav  navbar-foot">
-            <li class="pull-left"><a>© 2017 Copyright</a></li>
-            <li class="pull-right"><a >Formation Eni</a></li>
-        </ul>
-    </div>
-</nav>
+    </nav>
 
 </body>
 </html>
