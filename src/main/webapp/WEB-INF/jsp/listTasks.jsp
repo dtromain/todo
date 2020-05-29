@@ -77,10 +77,10 @@
                 </td>
                 <td>${t.done?"Yes":"No"}</td>
                 <td class="centre">
-                    <span class="modif glyphicon glyphicon-edit vert" id="ut${t.id}"></span>
+                    <span class="modif glyphicon glyphicon-edit vert" id="ut${t.id}" onclick="updateTask()"></span>
                 </td>
                 <td class="centre">
-                    <span class="glyphicon glyphicon-remove rouge supp" id="dt${t.id}"></span>
+                    <span class="glyphicon glyphicon-remove rouge supp" id="dt${t.id}" onclick="removeTask()"></span>
                 </td>
             </tr>
         </c:forEach>
