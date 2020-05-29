@@ -27,9 +27,6 @@ public class CategoryController {
 
     TaskController tc = new TaskController();
 
-    @Autowired
-    private User user;
-
     @PostConstruct
     private void init() {
     }

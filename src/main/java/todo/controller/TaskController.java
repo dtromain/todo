@@ -31,9 +31,6 @@ public class TaskController {
     @Autowired
     CategoryService cs;
 
-    @Autowired
-    private User user;
-
     @PostConstruct
     private void init() {
     }
