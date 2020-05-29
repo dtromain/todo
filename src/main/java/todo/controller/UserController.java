@@ -11,8 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import todo.bean.User;
 import todo.service.UserService;
 
-import javax.servlet.http.HttpSession;
-
 @Controller
 @SessionAttributes("user")
 public class UserController {
@@ -29,14 +27,14 @@ public class UserController {
     }
 
     @RequestMapping(path = "/validLogin", method = RequestMethod.POST)
-    public ModelAndView validLogin(User logUser, ModelMap model, HttpSession session, @ModelAttribute("user")User user) {
+    public ModelAndView validLogin(User logUser, ModelMap model, @ModelAttribute("user")User user) {
 
         User registerUser = us.findOneByLogin(logUser.getLogin());
 
         if (registerUser != null) {
             if (logUser.getPassword().equals(registerUser.getPassword())) {
-                session.setAttribute("user", registerUser);
-                return ts.listTasks(user);
+                model.addAttribute("user", registerUser);
+                return ts.listTasks(registerUser);
             } else {
                 return new ModelAndView("login");
             }
