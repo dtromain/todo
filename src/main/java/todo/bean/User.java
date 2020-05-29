@@ -1,11 +1,14 @@
 package todo.bean;
 
+import org.springframework.context.annotation.Scope;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "User")
+@Scope("session")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,6 +43,11 @@ public class User implements Serializable {
     public User(String lastName, String firstName, String login, String password) {
         this.lastName = lastName;
         this.firstName = firstName;
+        this.login = login;
+        this.password = password;
+    }
+
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
     }

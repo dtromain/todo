@@ -1,24 +1,31 @@
 package todo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import todo.bean.Category;
+import todo.bean.User;
 import todo.service.CategoryService;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
+@Scope("session")
 public class CategoryController {
 
     @Autowired
     CategoryService cs;
 
     TaskController tc = new TaskController();
+
+    @Autowired
+    private User user;
 
     @PostConstruct
     private void init() {
@@ -34,8 +41,8 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/validCreateCategory", method = RequestMethod.POST)
-    public ModelAndView validCreateCategory(Category category, ModelMap model) {
+    public ModelAndView validCreateCategory(Category category, ModelMap model, HttpSession session) {
         cs.create(category);
-        return tc.listTasks();
+        return tc.listTasks(session);
     }
 }
