@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import todo.bean.Category;
+import todo.bean.User;
 import todo.service.CategoryService;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +15,9 @@ import java.util.List;
 
 @Controller
 public class CategoryController {
+
+    @Autowired
+    private User user;
 
     @Autowired
     CategoryService cs;
@@ -35,7 +39,8 @@ public class CategoryController {
 
     @RequestMapping(value = "/validCreateCategory", method = RequestMethod.POST)
     public ModelAndView validCreateCategory(Category category, ModelMap model) {
-        cs.create(category);
+        Category c = cs.create(category);
+        user.addCategory(c);
         return tc.listTasks();
     }
 }

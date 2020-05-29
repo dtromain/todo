@@ -2,6 +2,7 @@ package todo.bean;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -35,6 +36,8 @@ public class User implements Serializable {
 
 
     public User() {
+        this.categories = new ArrayList<>();
+        this.tasks = new ArrayList<>();
     }
 
     public User(String lastName, String firstName, String login, String password) {
@@ -42,6 +45,8 @@ public class User implements Serializable {
         this.firstName = firstName;
         this.login = login;
         this.password = password;
+        this.categories = new ArrayList<>();
+        this.tasks = new ArrayList<>();
     }
 
     public int getId() {
@@ -82,6 +87,22 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void addCategory(Category category) {
+        this.categories.add(category);
+    }
+
+    public void removeCategory(Category category) {
+        this.categories.remove(category);
+    }
+
+    public void addTask(Task task) {
+        this.tasks.add(task);
+    }
+
+    public void removeTask(Task task) {
+        this.tasks.remove(task);
     }
 
     @Override

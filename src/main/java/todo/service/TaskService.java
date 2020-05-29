@@ -21,8 +21,9 @@ public class TaskService {
         return dao.findOne(i);
     }
 
-    public void create(Task s) {
-        dao.save(s);
+    public Task create(Task t) {
+        Task res = dao.save(t);
+        return res;
     }
 
     public void update(Task t) {

@@ -1,15 +1,15 @@
 $(function(){
 	
-	$(".supp").on("click", function(){
+	$(".dt").on("click", function(){
 		var att = $(this).attr("id");
-		var rep = confirm("Voulez-vous supprimer l'élément ?");
+		var rep = confirm("Do you really want to delete this task ?");
 		if (rep)
-			window.location="supprimer?index=" + att;
+			window.location="deleteTask?index=" + att;
 	});
 	
-	$(".modif").on("click", function(){
+	$(".ut").on("click", function(){
 		var att = $(this).attr("id");
-		window.location="editer?index=" + att;
+		window.location="updateTask?index=" + att;
 	});
 	
 });

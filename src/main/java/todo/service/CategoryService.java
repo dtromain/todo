@@ -21,11 +21,8 @@ public class CategoryService {
         return dao.findOne(i);
     }
 
-    public void create(Category c) {
-        dao.save(c);
-    }
-
-    public void delete(Category c) {
-        dao.delete(c);
+    public Category create(Category c) {
+        Category res = dao.save(c);
+        return res;
     }
 }

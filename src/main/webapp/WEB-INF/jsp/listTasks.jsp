@@ -57,9 +57,11 @@
         <tr>
             <th><a href="sortTasks?type=tA"><span class="glyphicon glyphicon-menu-down"></span></a> Name <a
                     href="sortTasks?type=tD"><span class="glyphicon glyphicon-menu-up"></span></a></th>
-            <th></th>
+            <th>Description</th>
             <th><a href="sortTasks?type=dA"><span class="glyphicon glyphicon-menu-down"></span></a> Date <a
                     href="sortTasks?type=dD"><span class="glyphicon glyphicon-menu-up"></a></th>
+            <th>Categories</th>
+            <th>Done</th>
             <th></th>
             <th></th>
         </tr>
@@ -68,12 +70,17 @@
                 <td><a href="detailsTask?index=${t.id}">${t.name}</a></td>
                 <td>${t.description}</td>
                 <td>${t.date}</td>
+                <td>
+                    <c:forEach items="${t.categories}" var="category">
+                        <p>${category.name}</p>
+                    </c:forEach>
+                </td>
                 <td>${t.done?"Yes":"No"}</td>
                 <td class="centre">
-                    <span class="modif glyphicon glyphicon-edit vert" id="m${f.id}"></span>
+                    <span class="modif glyphicon glyphicon-edit vert" id="ut${t.id}"></span>
                 </td>
                 <td class="centre">
-                    <span class="glyphicon glyphicon-remove rouge supp" id="s${f.id}"></span>
+                    <span class="glyphicon glyphicon-remove rouge supp" id="dt${t.id}"></span>
                 </td>
             </tr>
         </c:forEach>

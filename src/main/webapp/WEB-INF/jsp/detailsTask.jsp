@@ -61,21 +61,14 @@
             <div class="form-group">
                 <form:label path="date" cssClass="col-xs-2 control-label">Date :</form:label>
                 <div class="col-xs-10">
-                    <form:input path="date" readonly="true" cssClass="form-control"/>
+                    <form:input path="date" type="date" readonly="true" cssClass="form-control"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <form:label path="duree" cssClass="col-xs-2 control-label">Durée :</form:label>
+                <form:label path="done" cssClass="col-xs-2 control-label">Durée :</form:label>
                 <div class="col-xs-10">
-                    <form:input path="duree" readonly="true" cssClass="form-control"/>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <form:label path="synopsis" cssClass="col-xs-2 control-label">Synopsis :</form:label>
-                <div class="col-xs-10">
-                    <form:textarea path="synopsis" rows="5" readonly="true" cssClass="form-control"/>
+                    <form:checkbox readonly="true" path="done" cssClass="form-control"/>
                 </div>
             </div>
 

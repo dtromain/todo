@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import todo.bean.Category;
 import todo.bean.Task;
+import todo.bean.User;
 import todo.service.CategoryService;
 import todo.service.TaskService;
 
@@ -17,6 +18,9 @@ import java.util.List;
 
 @Controller
 public class TaskController {
+
+    @Autowired
+    private User user;
 
     @Autowired
     TaskService ts;
@@ -56,8 +60,9 @@ public class TaskController {
 
     @RequestMapping(value = "/validCreateTask", method = RequestMethod.POST)
     public ModelAndView validCreateTask(Task task, ModelMap model) {
-        ts.create(task);
-        return listTasks();
+        Task t = ts.create(task);
+        user.addTask(t);
+        return this.listTasks();
     }
 
     @RequestMapping(value = "/deleteTask", method = RequestMethod.GET)

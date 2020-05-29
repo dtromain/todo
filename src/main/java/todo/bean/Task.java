@@ -27,15 +27,16 @@ public class Task implements Serializable {
     @Column(name = "done")
     private boolean done;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE})
     @JoinTable(
-            name = "TaskCategory",
+            name = "Task_Category",
             joinColumns = {@JoinColumn(name = "taskId", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "categoryId", referencedColumnName = "id")}
     )
     private List<Category> categories;
 
     public Task() {
+        this.categories = new ArrayList<>();
     }
 
     public Task(String name, String description, Date date, boolean done, User user, List<Category> categories) {
@@ -100,12 +101,7 @@ public class Task implements Serializable {
     }
 
     public void removeCategory(Category category) {
-        for (Iterator<Category> iter = this.getCategories().listIterator(); iter.hasNext(); ) {
-            Category currentCategory = iter.next();
-            if (currentCategory.getId() == category.getId()) {
-                iter.remove();
-            }
-        }
+        this.categories.remove(category);
     }
 
     @Override

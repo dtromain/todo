@@ -68,7 +68,8 @@
                 <form:label path="categories" cssClass="col-xs-2 control-label">Categories :</form:label>
                 <div class="col-xs-5">
                     <form:select path="categories" placeholder="Categories ..." cssClass="form-control"
-                                 multiple="true"/>
+                                 multiple="true" items="${categories}" itemLabel="name" itemValue="id"/>
+
                 </div>
             </div>
 
