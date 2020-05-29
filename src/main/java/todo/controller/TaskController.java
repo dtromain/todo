@@ -12,6 +12,7 @@ import todo.bean.Task;
 import todo.bean.User;
 import todo.service.CategoryService;
 import todo.service.TaskService;
+import todo.service.UserService;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
@@ -30,6 +31,9 @@ public class TaskController {
 
     @Autowired
     CategoryService cs;
+
+    @Autowired
+    UserService us;
 
     @PostConstruct
     private void init() {
@@ -63,6 +67,12 @@ public class TaskController {
 
     @RequestMapping(value = "/validCreateTask", method = RequestMethod.POST)
     public ModelAndView validCreateTask(Task task, ModelMap model, HttpSession session) {
+        List<Category> categories = new ArrayList<>();
+        for(Category category: task.getCategories()) {
+            int index = Integer.parseInt(category.getName());
+            categories.add(cs.findOneById(index));
+        }
+        task.setCategories(categories);
         Task t = ts.create(task);
         user.addTask(t);
         return this.listTasks(session);

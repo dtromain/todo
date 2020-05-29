@@ -43,20 +43,6 @@ public class User implements Serializable {
         this.tasks = new ArrayList<>();
     }
 
-    public User(String lastName, String firstName, String login, String password) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.login = login;
-        this.password = password;
-        this.categories = new ArrayList<>();
-        this.tasks = new ArrayList<>();
-    }
-
-    public User(String login, String password) {
-        this.login = login;
-        this.password = password;
-    }
-
     public int getId() {
         return id;
     }

@@ -27,7 +27,7 @@ public class Task implements Serializable {
     @Column(name = "done")
     private boolean done;
 
-    @ManyToMany(cascade = {CascadeType.MERGE})
+    @ManyToMany
     @JoinTable(
             name = "Task_Category",
             joinColumns = {@JoinColumn(name = "taskId", referencedColumnName = "id")},

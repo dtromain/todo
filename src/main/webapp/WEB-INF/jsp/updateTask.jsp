@@ -43,83 +43,40 @@
     <h1 class="bleu">Ajout d'un film</h1>
     <br><br>
     <div>
-        <form:form action="editerValid" method="POST" cssClass="form-horizontal" modelAttribute="film">
+        <form:form action="validUpdateTask" method="POST" cssClass="form-horizontal" modelAttribute="task">
             <form:hidden path="id"/>
             <div class="form-group">
-                <form:label path="titre" cssClass="col-xs-2 control-label">Titre :</form:label>
+                <form:label path="name" cssClass="col-xs-2 control-label">Name :</form:label>
                 <div class="col-xs-10">
-                    <form:input path="titre" placeholder="Titre du film ..." cssClass="form-control"/>
+                    <form:input path="name" placeholder="Task name ..." cssClass="form-control"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <form:label path="annee" cssClass="col-xs-2 control-label">Année :</form:label>
+                <form:label path="description" cssClass="col-xs-2 control-label">Description :</form:label>
                 <div class="col-xs-10">
-                    <form:input path="annee" placeholder="Année de sortie ..." cssClass="form-control"/>
+                    <form:input path="description" placeholder="Task description ..." cssClass="form-control"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <form:label path="style.id" cssClass="col-xs-2 control-label">Style :</form:label>
+                <form:label path="date" cssClass="col-xs-2 control-label">Date :</form:label>
                 <div class="col-xs-10">
-                    <form:select path="style.id" cssClass="form-control">
-                        <form:options items="${listeStyles}" itemValue="id" itemLabel="libelle"/>
-                    </form:select>
+                    <form:input path="date" placeholder="Task date ..." cssClass="form-control"/>
                 </div>
             </div>
+
             <div class="form-group">
-                <form:label path="real.prenom" cssClass="col-xs-2 control-label">Réalisateur :</form:label>
+                <form:label path="categories" cssClass="col-xs-2 control-label">Categories :</form:label>
                 <div class="col-xs-5">
-                    <form:input path="real.prenom" placeholder="Prénom ..." cssClass="form-control"/>
-                </div>
-                <div class="col-xs-5">
-                    <form:input path="real.nom" placeholder="Nom ..." cssClass="form-control"/>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <form:label path="duree" cssClass="col-xs-2 control-label">Durée :</form:label>
-                <div class="col-xs-10">
-                    <form:input path="duree" placeholder="Durée du film (format h:mm) ..." cssClass="form-control"/>
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <form:label path="vu" cssClass="col-xs-2 control-label">Vu :</form:label>
-                <div class="col-xs-10">
-                    <form:select path="vu" cssClass="form-control">
-                        <option value="true">Oui</option>
-                        <option value="false">Non</option>
-                    </form:select>
-                </div>
-            </div>
-
-            <c:forEach items="${ film.acteurs}" var="acteur" varStatus="status">
-                <div class="form-group">
-                    <form:label path="duree" cssClass="col-xs-2 control-label">Acteur ${status.index + 1} :</form:label>
-                    <div class="col-xs-5">
-                        <input name="acteurs[${status.index}].prenom" value="${acteur.prenom}" placeholder="Prénom ..."
-                               class="form-control"/>
-                    </div>
-                    <div class="col-xs-5">
-                        <input name="acteurs[${status.index}].nom" value="${acteur.nom}" placeholder="Nom ..."
-                               class="form-control"/>
-                    </div>
-                </div>
-            </c:forEach>
-
-            <div class="form-group">
-                <form:label path="synopsis" cssClass="col-xs-2 control-label">Synopsis :</form:label>
-                <div class="col-xs-10">
-                    <form:textarea path="synopsis" rows="5" placeholder="Résumé et commentaires ..."
-                                   cssClass="form-control"/>
+                    <form:select path="categories" placeholder="Categories ..." cssClass="form-control"
+                                 multiple="true" items="${categories}" itemLabel="name" itemValue="id"/>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-10">
-                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </form:form>
@@ -128,7 +85,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <ul class="nav navbar-nav  navbar-foot">
-            <li class="pull-left"><a>© 2017 Copyright</a></li>
+            <li class="pull-left"><a>© 2020 Copyright</a></li>
             <li class="pull-right"><a>Formation Eni</a></li>
         </ul>
     </div>

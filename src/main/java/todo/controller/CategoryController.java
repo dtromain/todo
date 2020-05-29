@@ -44,7 +44,6 @@ public class CategoryController {
     public ModelAndView validCreateCategory(Category category, ModelMap model, HttpSession session) {
         Category c = cs.create(category);
         user.addCategory(c);
-        cs.create(category);
         return tc.listTasks(session);
     }
 }

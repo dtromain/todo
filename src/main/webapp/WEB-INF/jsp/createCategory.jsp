@@ -47,7 +47,7 @@
             <div class="form-group">
                 <form:label path="name" cssClass="col-xs-2 control-label">Name :</form:label>
                 <div class="col-xs-10">
-                    <form:input path="name" placeholder="Task name ..." cssClass="form-control"/>
+                    <form:input path="name" placeholder="Category name ..." cssClass="form-control"/>
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <ul class="nav navbar-nav  navbar-foot">
-            <li class="pull-left"><a>© 2017 Copyright</a></li>
+            <li class="pull-left"><a>© 2020 Copyright</a></li>
             <li class="pull-right"><a>Formation Eni</a></li>
         </ul>
     </div>
