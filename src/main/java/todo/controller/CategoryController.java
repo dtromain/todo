@@ -21,10 +21,10 @@ public class CategoryController {
     TaskController tc = new TaskController();
 
     @PostConstruct
-    private void init(){
+    private void init() {
     }
 
-    @RequestMapping(value="/createCategory", method=RequestMethod.GET)
+    @RequestMapping(value = "/createCategory", method = RequestMethod.GET)
     public ModelAndView createCategory() {
         Category c = new Category();
         ModelAndView mav = new ModelAndView("createCategory", "category", c);
@@ -33,8 +33,8 @@ public class CategoryController {
         return mav;
     }
 
-    @RequestMapping(value="/validCreateCategory", method=RequestMethod.POST)
-    public ModelAndView validCreateCategory(Category category, ModelMap model){
+    @RequestMapping(value = "/validCreateCategory", method = RequestMethod.POST)
+    public ModelAndView validCreateCategory(Category category, ModelMap model) {
         cs.create(category);
         return tc.listTasks();
     }

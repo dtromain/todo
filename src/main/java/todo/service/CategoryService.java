@@ -13,19 +13,19 @@ public class CategoryService {
     @Autowired
     CategoryDAO dao;
 
-    public List<Category> findAll(){
+    public List<Category> findAll() {
         return dao.findAll();
     }
 
-    public Category findOneById(int i){
+    public Category findOneById(int i) {
         return dao.findOne(i);
     }
 
-    public void create(Category c){
+    public void create(Category c) {
         dao.save(c);
     }
 
-    public void delete(Category c){
+    public void delete(Category c) {
         dao.delete(c);
     }
 }

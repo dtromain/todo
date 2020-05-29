@@ -1,8 +1,5 @@
 package todo.bean;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
@@ -35,7 +32,7 @@ public class Task implements Serializable {
             name = "TaskCategory",
             joinColumns = {@JoinColumn(name = "taskId", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "categoryId", referencedColumnName = "id")}
-            )
+    )
     private List<Category> categories;
 
     public Task() {
@@ -103,7 +100,7 @@ public class Task implements Serializable {
     }
 
     public void removeCategory(Category category) {
-        for (Iterator<Category> iter = this.getCategories().listIterator(); iter.hasNext();) {
+        for (Iterator<Category> iter = this.getCategories().listIterator(); iter.hasNext(); ) {
             Category currentCategory = iter.next();
             if (currentCategory.getId() == category.getId()) {
                 iter.remove();
@@ -125,7 +122,7 @@ public class Task implements Serializable {
 
     public int[] categoryIds(List<Category> categories) {
         int[] res = new int[categories.size()];
-        for (int i=0; i<categories.size(); i++) {
+        for (int i = 0; i < categories.size(); i++) {
             res[i] = categories.get(i).getId();
         }
         return res;

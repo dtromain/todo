@@ -71,5 +71,12 @@
 		<property name="entityManagerFactory" ref="emf"/>
 	</bean>
 
+	<bean id="user" class="todo.bean.User">
+		<property name="firstName" value="admin"/>
+		<property name="lastName" value="admin"/>
+		<property name="login" value="admin"/>
+		<property name="password" value="password"/>
+	</bean>
+
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

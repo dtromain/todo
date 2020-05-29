@@ -25,11 +25,11 @@ public class TaskController {
     CategoryService cs;
 
     @PostConstruct
-    private void init(){
+    private void init() {
     }
 
-    @RequestMapping(path="/listTasks", method= RequestMethod.GET)
-    public ModelAndView listTasks(){
+    @RequestMapping(path = "/listTasks", method = RequestMethod.GET)
+    public ModelAndView listTasks() {
         List<Task> tasks = new ArrayList<>();
         try {
             tasks = ts.findAll();
@@ -39,14 +39,14 @@ public class TaskController {
         return new ModelAndView("listTasks", "tasks", tasks);
     }
 
-    @RequestMapping(value="/sortTasks", method=RequestMethod.GET)
-    public ModelAndView sortTasks(String type){
+    @RequestMapping(value = "/sortTasks", method = RequestMethod.GET)
+    public ModelAndView sortTasks(String type) {
         List<Task> tasks = ts.sort(type);
         return new ModelAndView("listTasks", "tasks", tasks);
     }
 
-    @RequestMapping(value="/createTask", method=RequestMethod.GET)
-    public ModelAndView createTask(){
+    @RequestMapping(value = "/createTask", method = RequestMethod.GET)
+    public ModelAndView createTask() {
         Task t = new Task();
         ModelAndView mav = new ModelAndView("createTask", "task", t);
         List<Category> categories = cs.findAll();
@@ -54,34 +54,33 @@ public class TaskController {
         return mav;
     }
 
-    @RequestMapping(value="/validCreateTask", method=RequestMethod.POST)
-    public ModelAndView validCreateTask(Task task, ModelMap model){
+    @RequestMapping(value = "/validCreateTask", method = RequestMethod.POST)
+    public ModelAndView validCreateTask(Task task, ModelMap model) {
         ts.create(task);
         return listTasks();
     }
 
-    @RequestMapping(value="/deleteTask", method=RequestMethod.GET)
-    public ModelAndView deleteTask(String index){
+    @RequestMapping(value = "/deleteTask", method = RequestMethod.GET)
+    public ModelAndView deleteTask(String index) {
         int i = Integer.parseInt(index.substring(1));
         Task task = ts.findOneById(i);
         ts.delete(task);
-
         return listTasks();
     }
 
-    @RequestMapping(value="/detailsTask", method=RequestMethod.GET)
+    @RequestMapping(value = "/detailsTask", method = RequestMethod.GET)
     public ModelAndView detailsTask(Integer index) {
         Task task = null;
-        if (index != null){
+        if (index != null) {
             task = ts.findOneById(index);
             return new ModelAndView("detailsTask", "task", task);
-        }
-        else
+        } else {
             return listTasks();
+        }
     }
 
-    @RequestMapping(value="/updateTask", method=RequestMethod.GET)
-    public ModelAndView updateTask(String index){
+    @RequestMapping(value = "/updateTask", method = RequestMethod.GET)
+    public ModelAndView updateTask(String index) {
         Task task = null;
         int i = Integer.parseInt(index.substring(1));
         task = ts.findOneById(i);
@@ -91,8 +90,8 @@ public class TaskController {
         return mav;
     }
 
-    @RequestMapping(value="/validUpdateTask", method=RequestMethod.POST)
-    public ModelAndView validUpdateTask(Task t){
+    @RequestMapping(value = "/validUpdateTask", method = RequestMethod.POST)
+    public ModelAndView validUpdateTask(Task t) {
         ts.update(t);
         return listTasks();
     }

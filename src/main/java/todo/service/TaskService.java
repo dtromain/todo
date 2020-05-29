@@ -13,23 +13,23 @@ public class TaskService {
     @Autowired
     TaskDAO dao;
 
-    public List<Task> findAll(){
+    public List<Task> findAll() {
         return dao.findAll();
     }
 
-    public Task findOneById(int i){
+    public Task findOneById(int i) {
         return dao.findOne(i);
     }
 
-    public void create(Task s){
+    public void create(Task s) {
         dao.save(s);
     }
 
-    public void update(Task t){
+    public void update(Task t) {
         dao.save(t);
     }
 
-    public void delete(Task t){
+    public void delete(Task t) {
         dao.delete(t);
     }
 

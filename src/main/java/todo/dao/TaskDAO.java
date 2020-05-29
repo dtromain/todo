@@ -7,7 +7,10 @@ import java.util.List;
 
 public interface TaskDAO extends JpaRepository<Task, Integer> {
     List<Task> findByOrderByDateAsc();
+
     List<Task> findByOrderByDateDesc();
+
     List<Task> findByOrderByCategoriesAsc();
+
     List<Task> findByOrderByCategoriesDesc();
 }
