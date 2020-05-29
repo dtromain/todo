@@ -13,5 +13,10 @@
 </head>
 <body>
 	<h1>Hello world !</h1>
+
+	<%
+		response.sendRedirect("http://localhost:8080/Gradle___todo_war/app/login.jsp");
+	%>
+
 </body>
 </html>
